@@ -1,0 +1,54 @@
+#version: '3.8'
+services:
+  web:
+    build:
+        context: ./docker/web
+        dockerfile: Dockerfile
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - 8020:80
+    depends_on:
+        - mysql
+
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3370:3306"
+    volumes:
+      - "./docker/volume/mysql:/var/lib/mysql/"
+    environment:
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=example_db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=22user33
+
+  phpmyadmin:
+    image: phpmyadmin
+#    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+
+  composer:
+      build:
+          context: ./docker/web
+          dockerfile: composer.Dockerfile
+      volumes:
+          - .:/var/www/html
+  artisan:
+      build:
+          context: ./docker/web
+          dockerfile: Dockerfile
+      volumes:
+          - .:/var/www/html
+      entrypoint: ["php", "/var/www/html/artisan"]
+volumes:
+  mysql:
+
+#networks:
+#    inception:
+#        driver: bridge

@@ -1,0 +1,305 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Doc API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1": {},
+        "/api/v1/employees": {
+            "get": {
+                "tags": [
+                    "Employee API"
+                ],
+                "description": "Get employees list",
+                "operationId": "34e9f5057f7ccfcf3e3b6433cad09bdf",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "test@tesn.com"
+                                                    },
+                                                    "first_name": {
+                                                        "type": "string",
+                                                        "example": "John"
+                                                    },
+                                                    "last_name": {
+                                                        "type": "string",
+                                                        "example": "Doe"
+                                                    },
+                                                    "company_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Employee API"
+                ],
+                "description": "Add new employee",
+                "operationId": "7197a21b8852d8951d6d9b912f500ca5",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "email": {
+                                                "type": "string",
+                                                "example": "test@tesn.com"
+                                            },
+                                            "first_name": {
+                                                "type": "string",
+                                                "example": "John"
+                                            },
+                                            "last_name": {
+                                                "type": "string",
+                                                "example": "Doe"
+                                            },
+                                            "company_id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "test@tesn.com"
+                                                },
+                                                "first_name": {
+                                                    "type": "string",
+                                                    "example": "John"
+                                                },
+                                                "last_name": {
+                                                    "type": "string",
+                                                    "example": "Doe"
+                                                },
+                                                "company_id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/employees/{employee}": {
+            "get": {
+                "tags": [
+                    "Employee API"
+                ],
+                "description": "Get employee info",
+                "operationId": "9b8ab9057a7d2e0bbb8663f6c3a1ee5b",
+                "parameters": [
+                    {
+                        "name": "employee",
+                        "in": "path",
+                        "description": "IDemployee",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "test@tesn.com"
+                                                },
+                                                "first_name": {
+                                                    "type": "string",
+                                                    "example": "John"
+                                                },
+                                                "last_name": {
+                                                    "type": "string",
+                                                    "example": "Doe"
+                                                },
+                                                "company_id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Employee API"
+                ],
+                "description": "Delete employee",
+                "operationId": "2299163b5f7fd5d2eb4d173c8f33f05a",
+                "parameters": [
+                    {
+                        "name": "employee",
+                        "in": "query",
+                        "description": "ID employee",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Employee deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Employee API"
+                ],
+                "description": "Edit employee",
+                "operationId": "ef0ff9aeb95429d255df10c4347904ab",
+                "parameters": [
+                    {
+                        "name": "employee",
+                        "in": "path",
+                        "description": "ID employee",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "email": {
+                                                "type": "string",
+                                                "example": "test@tesn.com"
+                                            },
+                                            "first_name": {
+                                                "type": "string",
+                                                "example": "John"
+                                            },
+                                            "last_name": {
+                                                "type": "string",
+                                                "example": "Doe"
+                                            },
+                                            "company_id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "test@tesn.com"
+                                                },
+                                                "first_name": {
+                                                    "type": "string",
+                                                    "example": "John"
+                                                },
+                                                "last_name": {
+                                                    "type": "string",
+                                                    "example": "Doe"
+                                                },
+                                                "company_id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Employee API",
+            "description": "Employee API"
+        }
+    ]
+}
