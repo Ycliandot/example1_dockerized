@@ -12,4 +12,5 @@
 - Console run command: docker compose run artisan migrate --seed
 - Console run command: docker compose run artisan storage:link
 - Console run command: chmod 777 -R storage && chmod 777 -R bootstrap/cache
-- Front (http:localhost:8020), Adminpanel (http:localhost:8020/admin, email: admin@gmail.com, pwd: 11admin11)
+- Front (http://localhost:8020), Adminpanel (http://localhost:8020/admin, email: admin@gmail.com, pwd: 11admin11)
+- Swagger: http://localhost:8020/api/documentation
